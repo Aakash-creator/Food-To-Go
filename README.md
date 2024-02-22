@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+
+=======
 ## Functionality of the Website Food To Go
 
 ### Admin:
@@ -95,3 +99,4 @@
 12. **Security:**
     - [ ] Ensure the security of user data and transactions.
     - [ ] Enable two-factor authentication for an added layer of security.
+>>>>>>> eecb712ad2d4b06c87d2c044200daac9f89ef8b2

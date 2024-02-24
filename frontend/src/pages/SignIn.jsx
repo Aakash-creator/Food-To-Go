@@ -1,6 +1,29 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 const SignIn = () => {
+  const [usremail, setUsremail] = useState();
+  const [usrpassword, setUsrpassword] = useState();
+  const navigate = useNavigate();
+
+  const handelsubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3000/user-signup/", { usremail, usrpassword })
+      .then((result) => {
+        console.log(result);
+        if (result.data === "User Already exists") {
+          alert(result.data);
+        } else {
+          alert("Account created Sucessfully!!");
+          navigate("/Login");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <section className="bg-gray-50 dark:bg-gray-900">
@@ -9,11 +32,7 @@ const SignIn = () => {
             to="#"
             className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
           >
-            <img
-              className="w-8 h-8 mr-2"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-              alt="logo"
-            />
+            <img className="w-8 h-8 mr-2" src="./src/assets/Web-Logo.png" alt="logo" />
             Food-To-Go
           </Link>
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -21,7 +40,7 @@ const SignIn = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Create an account
               </h1>
-              <form className="space-y-4 md:space-y-6" action="#">
+              <form className="space-y-4 md:space-y-6" onSubmit={handelsubmit}>
                 <div>
                   <label
                     htmlFor="email"
@@ -34,8 +53,11 @@ const SignIn = () => {
                     name="email"
                     id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="name@company.com"
+                    placeholder="name@mail.com"
                     required=""
+                    onChange={(e) => {
+                      setUsremail(e.target.value);
+                    }}
                   />
                 </div>
                 <div>
@@ -52,6 +74,9 @@ const SignIn = () => {
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
+                    onChange={(e) => {
+                      setUsrpassword(e.target.value);
+                    }}
                   />
                 </div>
                 <div>

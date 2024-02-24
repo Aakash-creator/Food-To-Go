@@ -6,6 +6,7 @@ import Pricing from "./pages/Pricing";
 import Login from "./pages/Login";
 import SignIn from "./pages/SignIn";
 import Navbar from "./components/Navbar";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Route path="/About" element={<AboutUs />} />
         <Route path="/Pricing" element={<Pricing />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Signin" element={<SignIn />} />
+        <Route path="/Signup" element={<SignIn />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );

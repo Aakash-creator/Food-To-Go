@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Pricing from "./pages/Pricing";
 import Login from "./pages/Login";
-import SignIn from "./pages/SignIn";
+import SignIn from "./pages/Signup";
 import Navbar from "./components/Navbar";
 import PageNotFound from "./pages/PageNotFound";
 
